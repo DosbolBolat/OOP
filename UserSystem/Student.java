@@ -8,6 +8,7 @@ import OOP.Journal.Journal;
 import OOP.Library.Book;
 import OOP.RequestSystem.Request;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -19,7 +20,7 @@ import OOP.Transcript.Transcript.Transcript;
 /**
 * @generated
 */
-public class Student extends User {
+public class Student extends User implements Serializable {
 
     private Vector<Course> courses;
 
@@ -40,6 +41,9 @@ public class Student extends User {
         super(username, password);
         this.facultyName = facultyName;
 
+    }
+    public Student(String username, String password) {
+        super(username, password);
     }
 
     public Vector<Course> getCourses() {
@@ -65,58 +69,34 @@ public class Student extends User {
     public void setFacultyName(Schools facultyName) {
         this.facultyName = facultyName;
     }
-    
-    
-    /**
-    * @generated
-    */
+
     public int getYear() {
         return this.year;
     }
-    
-    /**
-    * @generated
-    */
+
     public void setYear(Integer year) {
         this.year = year;
     }
 
-    /**
-    * @generated
-    */
     public Schedule getSchedule() {
         return this.schedule;
     }
-    
-    /**
-    * @generated
-    */
+
     public void setSchedule(Schedule schedule) {
         this.schedule = schedule;
     }
-    
-    
-    /**
-    * @generated
-    */
+
     public Set<Request> getRequest() {
         if (this.request == null) {
             this.request = new HashSet<Request>();
         }
         return this.request;
     }
-    
-    /**
-    * @generated
-    */
+
     public void setRequest(Set<Request> request) {
         this.request = request;
     }
-    
-    
-    /**
-    * @generated
-    */
+
     public Transcript getTranscript() {
         return this.transcript;
     }

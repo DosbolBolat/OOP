@@ -4,12 +4,11 @@ package OOP.Library;
 import OOP.RequestSystem.Request;
 import OOP.UserSystem.Student;
 
+import java.io.Serializable;
 import java.util.*;
 
-/**
-* @generated
-*/
-public class Librarian implements ManageRequest {
+
+public class Librarian implements ManageRequest, Serializable {
 
     private Vector<Book> listOfBooks;
     private Queue<Request> listOfRequestsLibrary;

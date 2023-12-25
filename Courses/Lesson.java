@@ -5,12 +5,13 @@ import OOP.Enums.LessonType;
 import OOP.UserSystem.Student;
 import OOP.UserSystem.Teacher;
 
+import java.io.Serializable;
 import java.util.Vector;
 
 /**
 * @generated
 */
-public class Lesson {
+public class Lesson implements Serializable {
     
     /**
     * @generated

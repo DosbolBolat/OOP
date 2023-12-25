@@ -7,13 +7,12 @@ import OOP.Enums.SemesterType;
 import OOP.UserSystem.Student;
 import OOP.UserSystem.Teacher;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Vector;
 
-/**
-* @generated
-*/
-public class Journal {
+
+public class Journal implements Serializable {
     
     /**
     * @generated

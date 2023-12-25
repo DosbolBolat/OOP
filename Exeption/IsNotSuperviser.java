@@ -1,14 +1,8 @@
-package OOP;
+package OOP.Exeption;
 
+import java.io.Serializable;
 
-/**
-* @generated
-*/
-public class IsNotSuperviser {
-    
-    
-    
-
+public class IsNotSuperviser implements Serializable {
     
     
 }

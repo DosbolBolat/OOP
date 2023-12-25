@@ -2,29 +2,36 @@ package OOP.UserSystem;
 
 
 import OOP.Enums.Role;
-import OOP.Util.Database.Authorization;
-import OOP.Util.ID_User;
+import OOP.Util.Authorization;
 import OOP.Util.database;
 
-public class Admin extends Employee {
+import java.io.Serializable;
+
+public class Admin extends Employee implements Serializable {
 
     private database data;
     private Authorization authorization;
 
-    public Admin(String username, String password, int salary, int workExperience) {
-        super(username, password, salary, workExperience);
+    public Admin(String username, String password) {
+        super(username, password, 12000, 2);
     }
     public database getDatabase() {
         return this.data;
     }
+    public database getData(){
+        return this.data;
+    }
 
     public void setDatabase(database data) {
+
         this.data = data;
     }
-    
 
-    public void addUser(String UserName, String password, Role role) {
-        User u = new User(UserName, password);
+
+    public void addUser(String UserName, String password, Role role) throws Exception{
+        User u = null;
+        if(role == Role.ADMIN)u = new Admin(UserName, password);
+        else if(role == Role.STUDENT)u = new Student(UserName, password);
         authorization.createUser(role, u);
     }
     public void showAdminMenu() {
@@ -36,33 +43,22 @@ public class Admin extends Employee {
     }
 
     public Authorization getAuthorization() {
+
         return authorization;
     }
 
     public void setAuthorization(Authorization authorization) {
+
         this.authorization = authorization;
     }
 
-    /**
-    * @generated
-    */
     public void removeUser(String ID, String UserName) {
         authorization.RemoveUser(ID, UserName);
     }
-    
-    /**
-    * @generated
-    */
     public void printOptions() {
 
     }
-    
-    /**
-    * @generated
-    */
     public void getMenu() {
 
     }
-    
-    
 }

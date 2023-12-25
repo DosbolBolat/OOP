@@ -1,10 +1,8 @@
 package OOP.Library;
 
+import java.io.Serializable;
 
-/**
-* @generated
-*/
-public class Book {
+public class Book implements Serializable {
 
     private String bookId;
     private String title;

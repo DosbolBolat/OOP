@@ -3,12 +3,14 @@ package OOP.News;
 
 import OOP.UserSystem.User;
 
+import java.awt.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
 * @generated
 */
-public class News {
+public class News implements Serializable {
     
     /**
     * @generated

@@ -3,6 +3,7 @@ import OOP.Enums.*;
 import OOP.UserSystem.Student;
 import OOP.UserSystem.Teacher;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -12,7 +13,7 @@ import java.util.Set;
 /**
 * @generated
 */
-public class Schedule {
+public class Schedule implements Serializable {
     
     /**
     * @generated

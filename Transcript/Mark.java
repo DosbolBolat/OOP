@@ -2,7 +2,9 @@ package OOP.Transcript;
 
 import OOP.Enums.Marks;
 
-public class Mark {
+import java.io.Serializable;
+
+public class Mark implements Serializable {
     private double att1;
     private double att2;
     private double Final;

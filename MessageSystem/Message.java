@@ -3,12 +3,14 @@ package OOP.MessageSystem;
 
 import OOP.UserSystem.User;
 import OOP.Enums.*;
+
+import java.io.Serializable;
 import java.util.Date;
 
 /**
 * @generated
 */
-public class Message {
+public class Message implements Serializable {
     
     /**
     * @generated

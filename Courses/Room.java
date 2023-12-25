@@ -1,11 +1,12 @@
 package OOP.Courses;
 
 
+import java.io.Serializable;
 
 /**
 * @generated
 */
-public class Room {
+public class Room implements Serializable {
     
     /**
     * @generated

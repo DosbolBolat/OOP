@@ -1,4 +1,4 @@
-package OOP.Util.Database;
+package OOP.Util;
 
 
 import OOP.Courses.Course;
@@ -16,60 +16,46 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Authorization implements Serializable {
-
     private UserRole role;
-
     private String Login;
-
     private String password;
     private database data;
     private ID_User idUser;
     public String id_admin;
-    {
+    public Authorization() {
+        this.data  = new database();
+        this.data = this.data.getInstance();
         this.idUser = new ID_User();
-    }
-
-    {
-        data = new database();
     }
 
     public UserRole getRole() {
         return this.role;
     }
-
-
     public void setRole(UserRole role) {
         this.role = role;
     }
-    
-    
-    /**
-    * @generated
-    */
     public String getLogin() {
         return this.Login;
     }
-    
-    /**
-    * @generated
-    */
     public void setLogin(String Login) {
         this.Login = Login;
     }
-
-    public void createUser(Role role, User u){
+    public void createUser(Role role, User u) throws Exception{
         String id = idUser.generateUniqueID();
         u.setID(id);
-        if(Role.ADMIN == role){
-            Employee e = (Employee)u;
-            Admin a = (Admin)e;
-            a.setDatabase(data);
-            a.setAuthorization(this);
+        u.setRole(role);
+        if (Role.ADMIN == role && u instanceof Employee) {
+            Employee e = (Employee) u;  // This line is causing the ClassCastException
+            if (e instanceof Admin) {
+                Admin a = (Admin) e;
+                a.setDatabase(data);
+                a.setAuthorization(this);
+            }
+            data.saveUser(id, u);
+        } else {
             data.saveUser(id, u);
         }
-        else{
-            data.saveUser(id, u);
-        }
+        saveDataBase.saveData(data);
     }
     public void RemoveUser(String s, String UserName){
         for (Map.Entry<String, User> hm : data.getListOfUsers().entrySet()) {
@@ -81,18 +67,12 @@ public class Authorization implements Serializable {
         }
         System.out.println("---- The user was not found ----");
     }
-    
-    /**
-    * @generated
-    */
     public String getPassword() {
         return this.password;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }
-
     public User LoginToSystem(String login, String password) {
         for (Map.Entry<String, User> hm : data.getListOfUsers().entrySet()) {
             if (Objects.equals(hm.getValue().getUsername(), login) && hm.getValue().getPassword().equals(password)){
@@ -101,7 +81,7 @@ public class Authorization implements Serializable {
             }
             return null;
         }
-    public void viewMenu() {
+    public void viewMenu() throws Exception {
         System.out.println("--- University System ---");
         while (true) {
             System.out.println("\nWelcome to university system!");
@@ -195,7 +175,6 @@ public class Authorization implements Serializable {
     }
 
     public boolean LogoutFromSystem() {
-        //TODO
         return false;
     }
 }

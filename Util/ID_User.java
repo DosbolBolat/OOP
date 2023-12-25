@@ -1,8 +1,9 @@
 package OOP.Util;
+import java.io.Serializable;
 import java.util.Random;
 import java.util.HashSet;
 import java.util.Set;
-public class ID_User {
+public class ID_User implements Serializable {
     private static final String PRIVATE_IDENTIFIER = "B";
     private static final int RANDOM_NUMBER_LENGTH = 6;
 

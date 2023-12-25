@@ -4,31 +4,23 @@ import java.util.Vector;
 
 
 import OOP.Enums.Languages;
+import OOP.Enums.Role;
 import OOP.Library.Book;
 import OOP.MessageSystem.Message;
 import OOP.News.News;
 
 
 public class User implements Serializable{
-
+    private Role role;
     private String username;
     private String password;
-
     private String ID;
-
     private String firstName;
-
     private String lastName;
-
     private String email;
-
     private String mobilePhone;
-
     private Languages SystemLanguage;
-
     private Vector<Book> books;
-
-
     private Message message;
 
 
@@ -40,139 +32,99 @@ public class User implements Serializable{
         this.username = username;
         this.password = password;
     }
+    public Role getRole() {
+        return role;
+    }
 
+    public void setRole(Role role) {
+        this.role = role;
+    }
     public Vector<Book> getBooks() {
         return books;
     }
-
     public void setBooks(Vector<Book> books) {
         this.books = books;
     }
 
     public String getUsername() {
+
         return this.username;
     }
 
     public void setUsername(String username) {
+
         this.username = username;
     }
-    
-    
-    /**
-    * @generated
-    */
+
     public String getPassword() {
+
         return this.password;
     }
-    
-    /**
-    * @generated
-    */
+
     public void setPassword(String password) {
+
         this.password = password;
     }
-    
-    
-    /**
-    * @generated
-    */
+
     public String getID() {
+
         return this.ID;
     }
-    
-    /**
-    * @generated
-    */
+
     public void setID(String ID) {
+
         this.ID = ID;
     }
-    
-    
-    /**
-    * @generated
-    */
+
     public String getFirstName() {
+
         return this.firstName;
     }
-    
-    /**
-    * @generated
-    */
     public void setFirstName(String firstName) {
+
         this.firstName = firstName;
     }
-    
-    
-    /**
-    * @generated
-    */
     public String getLastName() {
+
         return this.lastName;
     }
-    
-    /**
-    * @generated
-    */
     public void setLastName(String lastName) {
+
         this.lastName = lastName;
     }
-    
-    
-    /**
-    * @generated
-    */
+
     public String getEmail() {
+
         return this.email;
     }
-    
-    /**
-    * @generated
-    */
+
     public void setEmail(String email) {
         this.email = email;
     }
-    
-    
-    /**
-    * @generated
-    */
     public String getMobilePhone() {
+
         return this.mobilePhone;
     }
-    
-    /**
-    * @generated
-    */
     public void setMobilePhone(String mobilePhone) {
+
         this.mobilePhone = mobilePhone;
     }
-    
-    
-    /**
-    * @generated
-    */
     public Languages getSystemLanguage() {
+
         return this.SystemLanguage;
     }
-    
-    /**
-    * @generated
-    */
     public void setSystemLanguage(Languages SystemLanguage) {
+
         this.SystemLanguage = SystemLanguage;
     }
-
     public Message getMessage() {
+
         return this.message;
     }
-    
-    /**
-    * @generated
-    */
     public void setMessage(Message message) {
+
         this.message = message;
     }
-
 
     public void showUserMenu() {
         System.out.println("\nWelcome to university system");
@@ -188,30 +140,16 @@ public class User implements Serializable{
     }
     public void updateLogin() {
     }
-    
-    /**
-    * @generated
-    */
     public boolean changePassword() {
         //TODO
         return false;
     }
-    
-    /**
-    * @generated
-    */
+
     public void viewNews() {
     }
-    
-    /**
-    * @generated
-    */
+
     public void createRequest() {
     }
-    
-    /**
-    * @generated
-    */
     public void showNews() {
 
     }
@@ -219,10 +157,7 @@ public class User implements Serializable{
         //TODO
         return false;
     }
-    
-    /**
-    * @generated
-    */
+
     public void logInSystem() {
 
     }
@@ -237,6 +172,4 @@ public class User implements Serializable{
             return;
         }
     }
-    
-    
 }

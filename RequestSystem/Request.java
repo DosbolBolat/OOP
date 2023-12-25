@@ -5,12 +5,13 @@ import OOP.Library.Librarian;
 import OOP.UserSystem.Student;
 import OOP.UserSystem.User;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
 * @generated
 */
-public class Request {
+public class Request implements Serializable {
     
     /**
     * @generated

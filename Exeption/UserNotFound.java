@@ -1,14 +1,8 @@
-package OOP;
+package OOP.Exeption;
 
+import java.io.Serializable;
 
-/**
-* @generated
-*/
-public class UserNotFound {
-    
-    
-    
+public class UserNotFound implements Serializable {
 
-    
     
 }

@@ -3,11 +3,12 @@ package OOP.Transcript.Transcript;
 import OOP.Courses.Course;
 import OOP.Transcript.Mark;
 
+import java.io.Serializable;
 import java.util.AbstractMap;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Transcript {
+public class Transcript implements Serializable {
     private HashMap<Course, Mark> courseMarkHashMap;
     private Double GPA;
 
