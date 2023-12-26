@@ -1,64 +1,32 @@
 package OOP.Researcher;
-
-
-/**
-* @generated
-*/
 public class DiplomaProjects {
-    
-    /**
-    * @generated
-    */
-    private ResearchProject ListOfProject;
-    
-    /**
-    * @generated
-    */
+    private ResearchProject Project;
     private GraduateStudent GraduateStudent;
-    
-    
-    
 
-    /**
-    * @generated
-    */
-    private ResearchProject getListOfProject() {
-        return this.ListOfProject;
+    public ResearchProject getListOfProject() {
+        return this.Project;
     }
-    
-    /**
-    * @generated
-    */
-    private void setListOfProject(ResearchProject ListOfProject) {
-        this.ListOfProject = ListOfProject;
+
+
+    public void setListOfProject(ResearchProject ListOfProject) {
+        this.Project = ListOfProject;
     }
-    
-    
-    /**
-    * @generated
-    */
-    private GraduateStudent getGraduateStudent() {
+
+    public GraduateStudent getGraduateStudent() {
         return this.GraduateStudent;
     }
-    
-    /**
-    * @generated
-    */
-    private void setGraduateStudent(GraduateStudent  GraduateStudent) {
+
+    public void setGraduateStudent(GraduateStudent  GraduateStudent) {
         this.GraduateStudent = GraduateStudent;
     }
-    
-    
-    
-    
 
-    //                          Operations                                  
-    
-    /**
-    * @generated
-    */
-    public void PublishedProject() {
+
+    public void publishProject() {
+        if (Project != null) {
+            System.out.println("Project Published: " + Project.getTopicName());
+            GraduateStudent.addPublishedProject(Project);
+        } else {
+            System.out.println("No project to publish.");
+        }
     }
-    
-    
 }

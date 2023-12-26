@@ -1,26 +1,10 @@
 package OOP.Researcher;
 
+import java.util.Comparator;
 
-/**
-* @generated
-*/
-public class CitationsComparator {
-    
-    
-    
-
-    
-    
-
-    //                          Operations                                  
-    
-    /**
-    * @generated
-    */
-    public int compare() {
-        //TODO
-        return 0;
+public class CitationsComparator implements Comparator<ResearchPaper> {
+    @Override
+    public int compare(ResearchPaper paper1, ResearchPaper paper2) {
+        return Integer.compare(paper1.getCitations(), paper2.getCitations());
     }
-    
-    
 }

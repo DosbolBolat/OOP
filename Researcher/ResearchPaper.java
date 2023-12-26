@@ -1,129 +1,83 @@
 package OOP.Researcher;
 
-
 import java.util.Date;
+import java.util.List;
 import java.util.Vector;
 
-/**
-* @generated
-*/
-public class ResearchPaper implements Supervisor, Researcher {
-    
-    /**
-    * @generated
-    */
-    private String title;
-    
-    /**
-    * @generated
-    */
-    private Vector<String> authors;
-    
-    /**
-    * @generated
-    */
-    private ResearcherJournal journal;
-    
-    /**
-    * @generated
-    */
-    private int pages;
-    
-    /**
-    * @generated
-    */
-    private Date date;
-    
-    
-    
+public class ResearchPaper{
 
-    /**
-    * @generated
-    */
-    private String getTitle() {
+    private String title;
+
+    private List<String> authors;
+
+    private int pages;
+
+    private Date date;
+    private String doi;
+    private int citations;
+
+    public ResearchPaper(String title, List<String> authors, int pages, Date date, String doi, int citations) {
+        this.title = title;
+        this.authors = authors;
+        this.pages = pages;
+        this.date = date;
+        this.doi = doi;
+        this.citations = citations;
+    }
+
+    public String getTitle() {
         return this.title;
     }
-    
-    /**
-    * @generated
-    */
-    private void setTitle(String title) {
+
+    public void setTitle(String title) {
         this.title = title;
     }
-    
-    
-    /**
-    * @generated
-    */
-    private Vector<String> getAuthors() {
+
+    public List<String> getAuthors() {
         return this.authors;
     }
-    
-    /**
-    * @generated
-    */
-    private void setAuthors(Vector<String> authors) {
+
+    public void setAuthors(Vector<String> authors) {
         this.authors = authors;
     }
-    
-    
-    /**
-    * @generated
-    */
-    private ResearcherJournal getJournal() {
-        return this.journal;
-    }
-    
-    /**
-    * @generated
-    */
-    private void setJournal(ResearcherJournal journal) {
-        this.journal = journal;
-    }
-    
-    
-    /**
-    * @generated
-    */
-    private int getPages() {
+
+    public int getPages() {
         return this.pages;
     }
-    
-    /**
-    * @generated
-    */
-    private void setPages(Integer pages) {
+
+    public void setPages(Integer pages) {
         this.pages = pages;
     }
-    
-    
-    /**
-    * @generated
-    */
-    private Date getDate() {
+
+    public Date getDate() {
         return this.date;
     }
-    
-    /**
-    * @generated
-    */
-    private void setDate(Date date) {
+
+    public void setDate(Date date) {
         this.date = date;
     }
-    
-    
-    
-    
 
-    //                          Operations                                  
-    
-    /**
-    * @generated
-    */
-    public String getCitation() {
-        //TODO
-        return "";
+    public void setAuthors(List<String> authors) {
+        this.authors = authors;
     }
-    
-    
+
+    public void setPages(int pages) {
+        this.pages = pages;
+    }
+
+    public String getDoi() {
+        return doi;
+    }
+
+    public void setDoi(String doi) {
+        this.doi = doi;
+    }
+
+    public int getCitations() {
+        return citations;
+    }
+
+    public void setCitations(int citations) {
+        this.citations = citations;
+    }
 }

@@ -1,76 +1,45 @@
 package OOP.Researcher;
-
-
 import java.util.Vector;
 
-/**
-* @generated
-*/
-public class ResearchProject implements Supervisor, Researcher {
-    
-    /**
-    * @generated
-    */
+public class ResearchProject{
     private String TopicName;
-    
-    /**
-    * @generated
-    */
-    private Vector<ResearchPaper> publishedPapers;
-    
-    /**
-    * @generated
-    */
-    private Vector<Researcher> participant;
-    
-    
-    
 
-    /**
-    * @generated
-    */
-    private String getTopicName() {
+    private Vector<ResearchPaper> publishedPapers;
+
+    private Vector<Researcher> participant;
+
+    public ResearchProject(String topicName) {
+        TopicName = topicName;
+    }
+
+    public String getTopicName() {
         return this.TopicName;
     }
-    
-    /**
-    * @generated
-    */
-    private void setTopicName(String TopicName) {
+
+    public void setTopicName(String TopicName) {
         this.TopicName = TopicName;
     }
-    
-    
-    /**
-    * @generated
-    */
-    private Vector<ResearchPaper> getPublishedPapers() {
+
+    public Vector<ResearchPaper> getPublishedPapers() {
         return this.publishedPapers;
     }
-    
-    /**
-    * @generated
-    */
-    private void setPublishedPapers(Vector<ResearchPaper> publishedPapers) {
-        this.publishedPapers = publishedPapers;
+
+    public void setPublishedPapers(ResearchPaper paper) {
+        this.publishedPapers.add(paper);
     }
-    
-    
-    /**
-    * @generated
-    */
-    private Vector<Researcher> getParticipant() {
+
+    public Vector<Researcher> getParticipant() {
         return this.participant;
     }
-    
-    /**
-    * @generated
-    */
-    private void setParticipant(Vector<Researcher> participant) {
+
+    public void setParticipant(Vector<Researcher> participant) {
         this.participant = participant;
     }
-    
-    
-    
-    
+
+    public void addParticipant(Researcher researcher) throws CustomException {
+        if (!researcher.getClass().equals(Researcher.class)) {
+            throw new CustomException("Only researchers can participate in the project.");
+        }
+        participant.add(researcher);
+    }
 }
