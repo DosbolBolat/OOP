@@ -1,144 +1,75 @@
 package OOP.UserSystem;
 
-
 import OOP.Courses.Course;
 import OOP.Courses.Schedule;
+import OOP.Enums.Attendance;
 import OOP.Enums.TeacherRank;
 import OOP.Journal.Journal;
 
-import java.util.HashSet;
+import java.io.Serializable;
 import java.util.Set;
 import java.util.Vector;
 
-/**
-* @generated
-*/
-public class Teacher extends Employee{
+public class Teacher extends Employee implements Serializable {
 
     private TeacherRank teacherType;
     private Vector<Course> coursesTaken;
-
     private Schedule schedule;
-
     private Set<Journal> journal;
 
-    public Teacher(String username, String password,int salary, int workExperience, TeacherRank teacherType, Vector<Course> coursesTaken, Schedule schedule, Set<Journal> journal) {
-        super(username, password,salary, workExperience);
+    public Teacher(String username, String password, int salary, int workExperience, TeacherRank teacherType, Vector<Course> coursesTaken, Schedule schedule, Set<Journal> journal) {
+        super(username, password, 200000, 5);
         this.teacherType = teacherType;
         this.coursesTaken = coursesTaken;
         this.schedule = schedule;
         this.journal = journal;
     }
 
-    private TeacherRank getTeacherType() {
-        return this.teacherType;
-    }
-    
-    /**
-    * @generated
-    */
-    private void setTeacherType(TeacherRank teacherType) {
-        this.teacherType = teacherType;
-    }
-    
-    
-    /**
-    * @generated
-    */
-    private Vector<Course> getCoursesTaken() {
-        return this.coursesTaken;
-    }
-    
-    /**
-    * @generated
-    */
-    private void setCoursesTaken(Vector<Course> coursesTaken) {
-        this.coursesTaken = coursesTaken;
-    }
-    
-    
-    /**
-    * @generated
-    */
-    private Schedule getSchedule() {
-        return this.schedule;
-    }
-    
-    /**
-    * @generated
-    */
-    private void setSchedule(Schedule schedule) {
-        this.schedule = schedule;
+    public Teacher(String userName, String password) {
+        super(userName, password, 200000, 5);
     }
 
-    
-    /**
-    * @generated
-    */
-    public Set<Journal> getJournal() {
-        if (this.journal == null) {
-            this.journal = new HashSet<Journal>();
+    // Геттеры и сеттеры для остальных полей
+
+    public void showTeacherMenu() {
+        System.out.println("\n--- Teacher Menu ---");
+        System.out.println("1. View Course Journal");
+        System.out.println("2. Mark Attendance");
+        System.out.println("3. Grade Course");
+        System.out.println("4. View Schedule");
+        System.out.println("5. Logout");
+    }
+    public void viewJournal(String course) {
+        // Предполагается, что у учителя есть доступ к объекту Journal для выбранного курса
+        for (Journal journal : this.journal) {
+            if (journal.getCourse().equals(course)) {
+                journal.ViewJournal();
+                return;
+            }
         }
-        return this.journal;
+        System.out.println("Journal for the selected course not found.");
     }
-    
-    /**
-    * @generated
-    */
-    public void setJournal(Set<Journal> journal) {
-        this.journal = journal;
-    }
-    
-    
-    
 
-    //                          Operations                                  
-    
-    /**
-    * @generated
-    */
-    public void putMark() {
+    public void markAttendance(String course, Student studentUsername, Attendance isPresent) {
+        // Предполагается, что у учителя есть доступ к объекту Journal для выбранного курса
+        for (Journal journal : this.journal) {
+            if (journal.getCourse().equals(course)) {
+                journal.markAttendance(studentUsername, isPresent);
+                return;
+            }
+        }
+        System.out.println("Journal for the selected course not found.");
+    }
 
+    public void gradeCourse(String course, Student studentUsername, double grade) {
+        // Предполагается, что у учителя есть доступ к объекту Journal для выбранного курса
+        for (Journal journal : this.journal) {
+            if (journal.getCourse().equals(course)) {
+                journal.gradeCourse(studentUsername, grade);
+                return;
+            }
+        }
+        System.out.println("Journal for the selected course not found.");
     }
-    
-    /**
-    * @generated
-    */
-    public void viewCourse() {
 
-    }
-    
-    /**
-    * @generated
-    */
-    public Vector<Course> getCoursesTakem() {
-        //TODO
-        return null;
-    }
-    
-    /**
-    * @generated
-    */
-    public boolean putFirstAttestationMark() {
-        //TODO
-        return false;
-    }
-    
-    /**
-    * @generated
-    */
-    public boolean putSecondAttestation() {
-        //TODO
-        return false;
-    }
-    
-    /**
-    * @generated
-    */
-    public boolean putFinalAttestationMark() {
-        //TODO
-        return false;
-    }
-    
-    
 }

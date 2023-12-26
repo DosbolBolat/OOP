@@ -23,6 +23,10 @@ public class Employee extends User {
         this.workExperience = workExperience;
     }
 
+    public Employee() {
+        super();
+    }
+
     public void setSalary(Integer salary) {
         this.salary = salary;
     }

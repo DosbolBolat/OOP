@@ -2,6 +2,7 @@ package OOP.Util;
 
 
 import OOP.Courses.Course;
+import OOP.Enums.Attendance;
 import OOP.Enums.Role;
 import OOP.Enums.UserRole;
 import OOP.Transcript.Mark;
@@ -164,6 +165,68 @@ public class Authorization implements Serializable {
                         String deleteName = (new Scanner(System.in)).nextLine();
                         admin.removeUser(deleteID, deleteName);
                     } else if (option == 6) {
+                        LogoutFromSystem();
+                        break;
+                    } else {
+                        System.err.println("Error: wrong option");
+                    }
+                }
+            }
+            else if (u instanceof Teacher) {
+                while (true) {
+                    Teacher teacher = (Teacher) u;
+                    teacher.showTeacherMenu();
+                    System.out.print("Option: ");
+                    int option = Integer.parseInt((new Scanner(System.in)).nextLine());
+                    if (option == 1) {
+                        System.out.println("Write course");
+                        String courseName = (new Scanner(System.in).nextLine());
+                        teacher.viewJournal(courseName);
+                    } else if (option == 2) {
+                        System.out.println("Name course");
+                        String courseName = (new Scanner(System.in).nextLine());
+                        System.out.println("ID student");
+                        String id = (new Scanner(System.in).nextLine());
+                        User user = null;
+                        for (Map.Entry<String, User> hm : data.getListOfUsers().entrySet()) {
+                            if (Objects.equals(hm.getValue().getUsername(), id)){
+                                user = hm.getValue();
+                                break;
+                            }
+                        }
+                        if(user != null){
+                            Student student = (Student)user;
+                            System.out.println("Attendance");
+                            String studentAttendance = (new Scanner(System.in).nextLine());
+                            Attendance attendance = Attendance.of(studentAttendance);
+                            teacher.markAttendance(courseName,student,attendance);
+                        }
+                        else{
+                            System.out.println("User not found!");
+                        }
+                    } else if (option == 3) {
+                        System.out.println("Name course");
+                        String courseName = (new Scanner(System.in).nextLine());
+                        System.out.println("ID student");
+                        String id = (new Scanner(System.in).nextLine());
+                        User user = null;
+                        for (Map.Entry<String, User> hm : data.getListOfUsers().entrySet()) {
+                            if (Objects.equals(hm.getValue().getUsername(), id)) {
+                                user = hm.getValue();
+                                break;
+                            }
+                        }
+                        if (user != null) {
+                            Student student = (Student) user;
+                            System.out.println("Enter the grade for the student:");
+                            double grade = Double.parseDouble((new Scanner(System.in)).nextLine());
+                            teacher.gradeCourse(courseName, student, grade);
+                        } else {
+                            System.out.println("User not found!");
+                        }
+                    } else if (option == 4) {
+                        // ... (опция для уведомления о расписании, оставлена для наглядности)
+                    } else if (option == 5) {
                         LogoutFromSystem();
                         break;
                     } else {

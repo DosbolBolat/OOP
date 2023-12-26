@@ -32,6 +32,7 @@ public class Admin extends Employee implements Serializable {
         User u = null;
         if(role == Role.ADMIN)u = new Admin(UserName, password);
         else if(role == Role.STUDENT)u = new Student(UserName, password);
+        else if(role == Role.TEACHER)u = new Teacher(UserName, password);
         authorization.createUser(role, u);
     }
     public void showAdminMenu() {

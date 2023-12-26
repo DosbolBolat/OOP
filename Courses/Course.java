@@ -294,6 +294,9 @@ public class Course implements Serializable {
         //TODO
         return null;
     }
-    
-    
+
+
+    public String getName() {
+        return courseName;
+    }
 }

@@ -9,10 +9,7 @@ import OOP.Library.Book;
 import OOP.RequestSystem.Request;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.Vector;
+import java.util.*;
 
 import OOP.Transcript.Mark;
 import OOP.Transcript.Transcript.Transcript;
@@ -134,6 +131,32 @@ public class Student extends User implements Serializable {
         for (Map.Entry<Course, Mark> hm : transcript.getCourseMarkHashMap().entrySet()) {
             System.out.println("- Course name " + hm.getKey().getCourseName() + " - credits " + hm.getKey().getCreditsNumber());
         }
+    }
+    public void chooseCourse() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Available courses:");
+
+        for (int i = 0; i < courses.size(); i++) {
+            System.out.println((i + 1) + ". " + courses.get(i).getCourseName());
+        }
+
+        System.out.print("Choose a course (enter the corresponding number): ");
+        int choice = scanner.nextInt();
+
+        if (choice > 0 && choice <= courses.size()) {
+            // Пользователь выбрал корректный номер курса
+            Course selectedCourse = courses.get(choice - 1);
+            // Теперь вы можете использовать этот выбранный курс для дальнейших действий
+            System.out.println("You have chosen the course: " + selectedCourse.getCourseName());
+            // Здесь вы можете, например, просмотреть журнал для выбранного курса
+            viewJournal(selectedCourse);
+        } else {
+            System.out.println("Invalid choice. Please enter a valid number.");
+        }
+    }
+
+    private void viewJournal(Course selectedCourse) {
     }
 
 

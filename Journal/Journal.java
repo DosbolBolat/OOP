@@ -1,172 +1,91 @@
 package OOP.Journal;
 
-
 import OOP.Courses.Course;
 import OOP.Enums.Attendance;
-import OOP.Enums.SemesterType;
 import OOP.UserSystem.Student;
-import OOP.UserSystem.Teacher;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Vector;
-
+import java.util.HashMap;
+import java.util.Map;
 
 public class Journal implements Serializable {
-    
-    /**
-    * @generated
-    */
     private Date date;
-    
-    /**
-    * @generated
-    */
-    private Vector<Course> Course;
-    
-    /**
-    * @generated
-    */
-    private SemesterType Semester;
-    
-    /**
-    * @generated
-    */
-    private double grade;
-    
-    /**
-    * @generated
-    */
-    private Attendance Attendance;
-    
-    
-    /**
-    * @generated
-    */
-    private Teacher teacher;
-    
-    /**
-    * @generated
-    */
-    private Student student;
-    
-    
+    private Map<Student, Record> studentRecords;
+    private Course course;
 
-    /**
-    * @generated
-    */
-    private Date getDate() {
+    public Journal(Date date) {
+        this.date = date;
+        this.studentRecords = new HashMap<>();
+    }
+
+    public Date getDate() {
         return this.date;
     }
-    
-    /**
-    * @generated
-    */
-    private void setDate(Date date) {
+
+    public void setDate(Date date) {
         this.date = date;
     }
-    
-    
-    /**
-    * @generated
-    */
-    private Vector<Course> getCourse() {
-        return this.Course;
-    }
-    
-    /**
-    * @generated
-    */
-    private void setCourse(Vector<Course> Course) {
-        this.Course = Course;
-    }
-    
-    
-    /**
-    * @generated
-    */
-    private SemesterType getSemester() {
-        return this.Semester;
-    }
-    
-    /**
-    * @generated
-    */
-    private void setSemester(SemesterType Semester) {
-        this.Semester = Semester;
-    }
-    
-    
-    /**
-    * @generated
-    */
-    private double getGrade() {
-        return this.grade;
-    }
-    
-    /**
-    * @generated
-    */
-    private void setGrade(Double grade) {
-        this.grade = grade;
-    }
-    
-    
-    /**
-    * @generated
-    */
-    private Attendance getAttendance() {
-        return this.Attendance;
-    }
-    
-    /**
-    * @generated
-    */
-    private void setAttendance(Attendance Attendance) {
-        this.Attendance = Attendance;
-    }
-    
-    
-    
-    /**
-    * @generated
-    */
-    public Teacher getTeacher() {
-        return this.teacher;
-    }
-    
-    /**
-    * @generated
-    */
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
-    }
-    
-    
-    /**
-    * @generated
-    */
-    public Student getStudent() {
-        return this.student;
-    }
-    
-    /**
-    * @generated
-    */
-    public void setStudent(Student student) {
-        this.student = student;
-    }
-    
-    
-    
 
-    //                          Operations                                  
-    
-    /**
-    * @generated
-    */
-    public void ViewJournal() {
+    public Map<Student, Record> getStudentRecords() {
+        return this.studentRecords;
     }
-    
-    
+
+    public void addStudentRecord(Student student, Record record) {
+        this.studentRecords.put(student, record);
+    }
+
+    public void viewJournal() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        System.out.println("Журнал на " + dateFormat.format(this.date) + ":");
+
+        for (Map.Entry<Student, Record> entry : studentRecords.entrySet()) {
+            Student student = entry.getKey();
+            Record record = entry.getValue();
+
+            System.out.println("Студент: " + student.getUsername());
+            System.out.println("Посещаемость: " + (record.getAttendance() ? "Присутствовал" : "Отсутствовал"));
+            System.out.println("Оценка: " + record.getGrade());
+            System.out.println("------------------------------");
+        }
+    }
+
+    public void markAttendance(Student student, Attendance atten) {
+        if (studentRecords.containsKey(student)) {
+            Record record = studentRecords.get(student);
+            record.setAttendance(atten);
+        } else {
+            System.out.println("Студент не найден в журнале.");
+        }
+    }
+
+    public void gradeCourse(Student student, double grade) {
+        if (studentRecords.containsKey(student)) {
+            Record record = studentRecords.get(student);
+            record.setGrade(grade);
+        } else {
+            System.out.println("Студент не найден в журнале.");
+        }
+    }
+
+    public Course getCourse() {
+        return this.course;
+    }
+
+    public void ViewJournal() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        System.out.println("Журнал для курса \"" + course.getCourseName() + "\", " +
+                "за " + dateFormat.format(this.date) + ":");
+
+        for (Map.Entry<Student, Record> entry : studentRecords.entrySet()) {
+            Student student = entry.getKey();
+            Record record = entry.getValue();
+
+            System.out.println("Студент: " + student.getUsername());
+            System.out.println("Посещаемость: " + (record.getAttendance() ? "Присутствовал" : "Отсутствовал"));
+            System.out.println("Оценка: " + record.getGrade());
+            System.out.println("------------------------------");
+        }
+    }
 }
